@@ -1,13 +1,15 @@
 #include <iostream>
 #include "keyboard.h"
 #include <unistd.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 bool gameOver = false;
 int x,y,fruitx,fruity;
 enum eDirection {STOP = 0 , LEFT,RIGHT , DOWN, UP};
 eDirection dir;
-int height=30, width=30;
+int height=20, width=30,score=0;
 
 
 void setUp(){
@@ -31,9 +33,11 @@ void draw(){
             cout<<endl;
         }
         else if(i!=0){
+            
             cout<<"#";
             for(int q = 1; q<width-1;q++){
                 if(q==x && i == y){
+                    for(int s=0;s<=score;s++)
                     cout<<"0";
                 }
                 else if(q==fruitx && i == fruity){
@@ -42,15 +46,28 @@ void draw(){
                 else
                 cout<<" ";  
             }
-            cout<<"#"<<endl;            
+            cout<<"#"<<endl;  
+
+    }
+    if(x==width ){
+        x=1;
+    }
+    else if(x==0){
+        x=width-1;
+    }
+    else if(y==0){
+        y=height-1;
+    }
+    else if(y==width){
+        y=1;
     }
 }
 }
 
 void input(){
     if(kbhit()){
-        char ch = getch_posix();
-        switch (ch){
+        // char ch = ;
+        switch (getch_posix()){
             case 'a':
                 dir = LEFT;
                 break;
@@ -68,14 +85,21 @@ void input(){
                 break;
 
         }
+
+    }
+    if(x==fruitx&&y==fruity){
+        fruitx = rand()%(width-2)+1;
+        fruity = rand()%(height-2)+1;
+        score++;
     }
 }
 
 void logic(){
-    switch (dir){
+    // while (1){
+        switch (dir){
         case LEFT:
             x--;
-            break;
+        break;
         case RIGHT:
             x++;
             break;
@@ -87,15 +111,22 @@ void logic(){
             break;
         // case default:
         // break;
+    
+    // }
     }
 }
 
 int main(){
     setUp();
+    srand(time(NULL));
+
+    init_keyboard();
+
     while(!gameOver){
             input();
             logic();
             draw();
             usleep(100000);
-    }
+     }
+
 }
