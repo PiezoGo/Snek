@@ -26,6 +26,7 @@ void draw(){
     int final = height;
     system("clear");
     for(int i=0; i<=height; i++){
+        
         if(i==0 || i == final){
             for(int j = 0; j<width; j++){
                 cout<<"#";
@@ -33,8 +34,9 @@ void draw(){
             cout<<endl;
         }
         else if(i!=0){
-            
             cout<<"#";
+            if(score>0 && y == i)
+            width = width-score;
             for(int q = 1; q<width-1;q++){
                 if(q==x && i == y){
                     for(int s=0;s<=score;s++)
@@ -46,6 +48,7 @@ void draw(){
                 else
                 cout<<" ";  
             }
+            width=30;
             cout<<"#"<<endl;  
 
     }
