@@ -9,7 +9,8 @@ bool gameOver = false;
 int x,y,fruitx,fruity;
 enum eDirection {STOP = 0 , LEFT,RIGHT , DOWN, UP};
 eDirection dir;
-int height=20, width=30,score=0;
+int height=20, width=30,score=0,tailn = 0;
+int tailx[100],taily[100],tailtx[100],tailty[100];
 
 
 void setUp(){
@@ -35,20 +36,48 @@ void draw(){
         }
         else if(i!=0){
             cout<<"#";
-            if(score>0 && y == i)
-            width = width-score;
             for(int q = 1; q<width-1;q++){
+                // int p=0;
                 if(q==x && i == y){
-                    for(int s=0;s<=score;s++)
-                    cout<<"0";
+                    cout<<"O";
+                    // for(int n=0;n<=tailn;n++){
+                        // if(tailn==1){
+                        //     tailtx[p]=q;
+                        //     taily[p]=i;
+                        // }
+                        // else if(tailn>1){ 
+                        //     for(int n = 0;n<=p;n++){
+                        //     tailx[p+n]=tailx[p];
+                        //     taily[p+n]=taily[p];
+                        //     tailtx[p]=q+n;
+                        //     taily[p]=i+n;
+                            
+                        // }
+                        //  }
+                    
+                    // }
+
                 }
                 else if(q==fruitx && i == fruity){
                     cout<<"f";
                 }
-                else
-                cout<<" ";  
+                else{
+                    bool printTail = false;
+                  for(int t = 0; t < tailn; t++) {
+            if(tailx[t] == q && taily[t] == i) {
+                printTail = true;
+                break;
             }
-            width=30;
+        }
+
+        if(printTail)
+            cout << "o";
+        else
+            cout << " ";  
+                    
+
+                } 
+            }
             cout<<"#"<<endl;  
 
     }
@@ -61,7 +90,7 @@ void draw(){
     else if(y==0){
         y=height-1;
     }
-    else if(y==width){
+    else if(y==height){
         y=1;
     }
 }
@@ -94,10 +123,31 @@ void input(){
         fruitx = rand()%(width-2)+1;
         fruity = rand()%(height-2)+1;
         score++;
+        tailn++;
     }
 }
 
 void logic(){
+
+    int prevX = tailx[0];
+    int prevY = taily[0];
+
+    int prev2X, prev2Y;
+
+    tailx[0] = x;
+    taily[0] = y;
+
+    for(int i = 1; i < tailn; i++) {
+        prev2X = tailx[i];
+        prev2Y = taily[i];
+
+        tailx[i] = prevX;
+        taily[i] = prevY;
+
+        prevX = prev2X;
+        prevY = prev2Y;
+    }
+
     // while (1){
         switch (dir){
         case LEFT:
