@@ -12,7 +12,7 @@ Score tracking
 
 Screen wrapping (snake reappears on opposite side)
 
-## Cross-platform support (Linux😃, macOS)
+## Cross-platform support (Linux😃, macOS, Windows(coming soon))
 🎮 Controls
 Key	Action
 W	Move Up
@@ -30,15 +30,15 @@ Q	Quit Game
 ## ⚙ Compilation
 ### Linux / macOS
 //Make sure g++ is installed in your system using the command
-
+```bash
 g++ --version
-
+```
 //then now do 
-
+```bash
 g++ snake.cpp keyboard.cpp -o snake
 
 ./snake
-
+```
 ## 🛠 How It Works
 
 The game runs in a continuous loop that:
