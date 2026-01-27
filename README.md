@@ -15,17 +15,21 @@ Screen wrapping (snake reappears on opposite side)
 ## Cross-platform support (Linux😃, macOS, Windows(coming soon))
 🎮 Controls
 Key	Action
-W	Move Up
-A	Move Left
-S	Move Down
-D	Move Right
-Q	Quit Game
+- W	Move Up
+- A	Move Left
+- S	Move Down
+- D	Move Right
+- Q	Quit Game
 📂 Files
-- snake.cpp     → Main game logic  
+- snake.cpp     → Main game logic  (for linux and MacOS)
 
-- keyboard.h   → Keyboard interface  
+- keyboard.h   → Keyboard interface  (for linux and MacOS)
 
-- keyboard.cpp → Cross-platform input handling  
+- keyboard.cpp → Cross-platform input handling  (for linux and MacOS)
+
+- SnekinWIN32.cpp → Cross-platform input handling  (WINDOWS Users)
+
+- try.exe → simple run this file
 
 ## ⚙ Compilation
 ### Linux / macOS
