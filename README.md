@@ -21,13 +21,15 @@ S	Move Down
 D	Move Right
 Q	Quit Game
 📂 Files
-snake.cpp     → Main game logic  
-keyboard.h   → Keyboard interface  
-keyboard.cpp → Cross-platform input handling  
+- snake.cpp     → Main game logic  
+
+- keyboard.h   → Keyboard interface  
+
+- keyboard.cpp → Cross-platform input handling  
 
 ## ⚙ Compilation
 ### Linux / macOS
-//Make user g++ is installed in your system using the command
+//Make sure g++ is installed in your system using the command
 
 g++ --version
 
