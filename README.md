@@ -26,8 +26,15 @@ keyboard.h   → Keyboard interface
 keyboard.cpp → Cross-platform input handling  
 
 ## ⚙ Compilation
-Linux / macOS
+### Linux / macOS
+//Make user g++ is installed in your system using the command
+
+g++ --version
+
+//then now do 
+
 g++ snake.cpp keyboard.cpp -o snake
+
 ./snake
 
 ## 🛠 How It Works
