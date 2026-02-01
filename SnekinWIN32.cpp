@@ -21,7 +21,7 @@ void setUp(){
     fruitx =   rand()%width;
     fruity = rand()%height;
 }
-//this goto function works on the cursor flickering problem
+//this goto function works on the cursor flickering pr
 void gotoxy(int,int);s
 
 void draw(){
